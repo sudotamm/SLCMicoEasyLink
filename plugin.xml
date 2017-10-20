@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-SLCMicoEasyLink" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SLCMicoEasyLink</name>
+    <description>Cordova SLCMicoEasyLink Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,SLCMicoEasyLink</keywords>
+
+    <engines>
+            <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/SLCMicoEasyLink.js" name="SLCMicoEasyLink">
+        <clobbers target="window.SLCMicoEasyLink" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="SLCMicoEasyLink">
+                <param name="ios-package" value="SLCMicoEasyLink"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/SLCMicoEasyLink.h" />
+        <source-file src="src/ios/SLCMicoEasyLink.m" />
+        <!--MICO source-->
+        <header-file src="src/ios/EasyLink.h" />
+        <source-file src="src/ios/libEasyLink.a" framework="true"/>
+    </platform>
+</plugin>

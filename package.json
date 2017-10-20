@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-SLCMicoEasyLink",
+  "version": "0.0.1",
+  "description": "Cordova SLCMicoEasyLink Plugin",
+  "cordova": {
+    "id": "cordova-plugin-SLCMicoEasyLink",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "SLCMicoEasyLink",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "ryan",
+  "license": "Apache 2.0"
+}
