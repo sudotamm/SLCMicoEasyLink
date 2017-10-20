@@ -5,7 +5,8 @@
   "cordova": {
     "id": "cordova-plugin-slcmicoeasylink",
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "repository": {
@@ -16,7 +17,8 @@
     "cordova",
     "SLCMicoEasyLink",
     "ecosystem:cordova",
-    "cordova-ios"
+    "cordova-ios",
+    "cordova-android"
   ],
   "engines": [
     {

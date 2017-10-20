@@ -4,7 +4,7 @@
     <description>Cordova SLCMicoEasyLink Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,SLCMicoEasyLink</keywords>
-    <repo>https://github.com/sudotamm/SLCMicoEasyLink.git</repo>
+
     <engines>
             <engine name="cordova" version=">=3.0.0" />
     </engines>
@@ -26,5 +26,29 @@
         <!--MICO source-->
         <header-file src="src/ios/EasyLink.h" />
         <source-file src="src/ios/libEasyLink.a" framework="true"/>
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="SLCMicoEasyLink">
+                <param name="android-package" value="com.siemens.dolphin.SLCMicoEasyLink.SLCMicoEasyLink" />
+            </feature>
+        </config-file>
+
+        <!-- permission -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+        </config-file>
+
+        <source-file src="src/android/SLCMicoEasyLink.java" target-dir="src/com/siemens/dolphin/SLCMicoEasyLink" />
+
+        <!-- MICO SDK -->
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        <resource-file src="src/android/libs/micosdk-release.aar" target="libs/micosdk-release.aar" />
     </platform>
 </plugin>
