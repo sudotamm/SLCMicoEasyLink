@@ -4,7 +4,7 @@
     <description>Cordova SLCMicoEasyLink Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,SLCMicoEasyLink</keywords>
-
+    <repo>https://github.com/sudotamm/SLCMicoEasyLink.git</repo>
     <engines>
             <engine name="cordova" version=">=3.0.0" />
     </engines>

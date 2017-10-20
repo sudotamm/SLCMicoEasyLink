@@ -8,6 +8,10 @@
       "ios"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudotamm/SLCMicoEasyLink.git"
+  },
   "keywords": [
     "cordova",
     "SLCMicoEasyLink",
@@ -20,6 +24,10 @@
       "version": ">=3.0.0"
     }
   ],
-  "author": "ryan",
-  "license": "Apache 2.0"
+  "author": "sudotamm",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/sudotamm/SLCMicoEasyLink/issues"
+  },
+  "homepage": "https://github.com/sudotamm/SLCMicoEasyLink#readme"
 }
