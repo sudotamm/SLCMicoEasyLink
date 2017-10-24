@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-slcmicoeasylink",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cordova SLCMicoEasyLink Plugin",
   "cordova": {
     "id": "cordova-plugin-slcmicoeasylink",
