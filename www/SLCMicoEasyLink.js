@@ -53,7 +53,7 @@ function SLCMicoEasyLink() {
 
     this.wifiName = ""
     this.available = false
-
+    var me = this
     channel.onCordovaReady.subscribe(function() {
         me.wifiSSID(function(info) {
             //ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
