@@ -25,48 +25,11 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
-channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
-
 /**
  * SLC-Mico EasyLink plugin
  */
-// export class SLCMicoEasyLink {
-//     static shared = new SLCMicoEasyLink()
 
-//     wifiSSID(successCallback, errorCallback) {
-//         exec(successCallback, errorCallback, "SLCMicoEasyLink", "wifiSSID", [])
-//     }
-
-//     startWifiConfigWithPwd(password, successCallback, errorCallback) {
-//         exec(successCallback, errorCallback, "SLCMicoEasyLink", "startWifiConfigWithPwd", [password])
-//     }
-
-//     stopWifiConfig(successCallback, errorCallback) {
-//         exec(successCallback, errorCallback, "SLCMicoEasyLink", "stopWifiConfig", [])
-//     }
-
-// }
-
-function SLCMicoEasyLink() {
-
-    this.wifiName = ""
-    this.available = false
-    var me = this
-    channel.onCordovaReady.subscribe(function() {
-        me.wifiSSID(function(info) {
-            //ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
-            //TODO: CB-5105 native implementations should not return info.cordova
-            me.available = true
-            me.wifiName = info
-            channel.onCordovaInfoReady.fire()
-        }, function(e) {
-            me.available = false;
-            utils.alert("[ERROR] Error initializing Cordova: " + e);
-        });
-    });
-}
+function SLCMicoEasyLink() {}
 
 SLCMicoEasyLink.prototype.wifiSSID = function(successCallback, errorCallback) {
     exec(successCallback, errorCallback, "SLCMicoEasyLink", "wifiSSID", []);
