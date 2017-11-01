@@ -85,14 +85,16 @@
 #pragma mark - EasyLinkFTCDelegate methods
 
 - (void)onFound:(NSNumber *)client withName:(NSString *)name mataData: (NSDictionary *)mataDataDict{
-    NSString *address = [[NSString alloc] initWithData:[mataDataDict objectForKey:@"MAC"] encoding:NSUTF8StringEncoding];
-    if(address.length == 0){
-        address = name;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:name forKey:@"name"];
+    for(NSString *key in [mataDataDict allKeys]){
+        id value = [mataDataDict objectForKey: key];
+        NSString *valueStr = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+        [dict setObject:valueStr forKey:key];
     }
- 
+
     [self.commandDelegate runInBackground:^{
-        NSLog(@"SLCMicoEasyLink: wifi smart config succeed with macc address: %@", address);
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:address];
+        NSLog(@"SLCMicoEasyLink: wifi smart config succeed: %@", dict);
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dict];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.configCommand.callbackId];
     }];
 }

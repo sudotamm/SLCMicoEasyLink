@@ -25,7 +25,7 @@ public class SLCMicoEasyLink extends CordovaPlugin {
     private static final String ACTION_WIFI_SSID = "wifiSSID";
     private static final String ACTION_START_WIFI_CONFIG_WITH_PWD = "startWifiConfigWithPwd";
     private static final String ACTION_STOP_WIFI_CONFIG = "stopWifiConfig";
-    private static final int RUN_SECOND = 60000;
+    private static final int RUN_SECOND = 35000;
     private static final int SLEEP_TIME = 20;
     private static final String DISCOVER_SERVICE = "_easylink._tcp.local.";
 
