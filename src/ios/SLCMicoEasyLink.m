@@ -85,7 +85,7 @@
 #pragma mark - EasyLinkFTCDelegate methods
 
 - (void)onFound:(NSNumber *)client withName:(NSString *)name mataData: (NSDictionary *)mataDataDict{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:name forKey:@"name"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:name forKey:@"Name"];
     for(NSString *key in [mataDataDict allKeys]){
         id value = [mataDataDict objectForKey: key];
         NSString *valueStr = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
