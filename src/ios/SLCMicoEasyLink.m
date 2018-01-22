@@ -69,7 +69,7 @@
     NSLog(@"SLCMicoEasyLink: wifi config: %@", wifiInfoDict.description);
     NSLog(@"SLCMicoEasyLink: wifi info: %@", userInfo);
     
-    [self.easylinkConfig prepareEasyLink:wifiInfoDict info:[NSData dataWithBytes:temp length:strlen(temp)] mode:EASYLINK_V2_PLUS];
+    [self.easylinkConfig prepareEasyLink:wifiInfoDict info:[NSData dataWithBytes:temp length:strlen(temp)] mode:EASYLINK_AWS];
     [self.easylinkConfig transmitSettings];
 }
 
@@ -85,15 +85,18 @@
 #pragma mark - EasyLinkFTCDelegate methods
 
 - (void)onFound:(NSNumber *)client withName:(NSString *)name mataData: (NSDictionary *)mataDataDict{
+    [self.easylinkConfig stopTransmitting];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:name forKey:@"Name"];
     for(NSString *key in [mataDataDict allKeys]){
+        if([key isEqualToString:@"IP"]){
+            continue;
+        }
         id value = [mataDataDict objectForKey: key];
         NSString *valueStr = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
         [dict setObject:valueStr forKey:key];
     }
-
+    NSLog(@"SLCMicoEasyLink: wifi smart config succeed: %@", dict);
     [self.commandDelegate runInBackground:^{
-        NSLog(@"SLCMicoEasyLink: wifi smart config succeed: %@", dict);
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dict];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.configCommand.callbackId];
     }];
