@@ -41,8 +41,17 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void)clearEasylink{
+    if(self.easylinkConfig){
+        [self.easylinkConfig unInit];
+        self.easylinkConfig = nil;
+    }
+}
+
 - (void)startWifiConfigWithPwd: (CDVInvokedUrlCommand*)command
 {
+    [self clearEasylink];
+    
     self.easylinkConfig = [[EASYLINK alloc]initForDebug:YES WithDelegate:self];
     self.configCommand = command;
     NSString *pwd = command.arguments.firstObject;
