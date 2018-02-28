@@ -9,6 +9,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.fogcloud.sdk.easylink.api.EasylinkP2P;
 import io.fogcloud.sdk.easylink.helper.EasyLinkCallBack;
@@ -78,8 +79,14 @@ public class SLCMicoEasyLink extends CordovaPlugin {
         easylink.startEasyLink(easyLinkParams, new EasyLinkCallBack() {
             @Override
             public void onSuccess(int i, String s) {
-                callbackContext.success(s);
-                Log.d(TAG, "startWifiConfig success: " + s);
+                try {
+                    JSONObject object = new JSONObject(s);
+                    callbackContext.success(object);
+                    Log.d(TAG, "startWifiConfig success: " + s);
+                } catch (JSONException e) {
+                    callbackContext.error("");
+                    Log.d(TAG, "parse wifi config callback error", e);
+                }
             }
 
             @Override
