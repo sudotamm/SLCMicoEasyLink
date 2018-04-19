@@ -43,6 +43,7 @@
 
 - (void)clearEasylink{
     if(self.easylinkConfig){
+        NSLog(@"SLCMicoEasyLink: uninit easylink instance.");
         [self.easylinkConfig unInit];
         self.easylinkConfig = nil;
     }
@@ -86,6 +87,7 @@
 {
     NSLog(@"SLCMicoEasyLink: stop wifi config.");
     [self.easylinkConfig stopTransmitting];
+    [self clearEasylink];
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
